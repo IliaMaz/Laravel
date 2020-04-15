@@ -11,11 +11,11 @@
 // * Get the request from the User
 if (isset($_GET['rqt'])) {
     // * Only valid rqsts
-    if ($_GET['rqt'] == 'movies') {
-        echo 'Request : movies';
+    if ($_GET['rqt'] == 'movie') {
+        echo 'Request : movie';
         // * Call the movie controller
         require_once './Controllers/MovieController.php';
         $movieCtrler = new MovieController();
-        $movieCtrler->movieList();
+        $movieCtrler->movie();
     }
 }

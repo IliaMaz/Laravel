@@ -1,0 +1,29 @@
+This is next step of MVC1.
+
+- Part 1 :
+
+    First, edit your database. You have to add a new table : comments.
+    This will hold : id, comment, #movie_id
+
+    You have to create the relationship (foreign key) between comments and movies tables.
+
+    You can manually enter comments if you want.
+
+- Part 2 : 
+
+    In your code, create a class 'Comment'. It will represent a specific comment, its attributes and so on....
+
+- Part 3 :
+
+    Now, change the 'Movie' class.
+    A movie is designated by all its regular attributs and also an array of comments.
+
+- Part 4 :
+
+    Now, when you create a Movie object, you should attach all the comments to it.
+    Meaning: when dealing with database, you should take all the comments also and give them to the Movie object.
+
+- Part 5 :
+
+    Change the views to match.
+

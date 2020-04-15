@@ -1,0 +1,11 @@
+For this exercise, you can / must start from the current exemple based on the Object-Oriented MVC.
+
+- Exercise :
+
+Add a feature to see the detail of a specific movie.
+For this, you have to follow these steps :
+
+    1. Use the front controller to catch the request of a specific movie.
+    2. The front controller should ask MovieController to get one specific movie.
+    3. Create a function in the model to retrieve one movie with a specific id.
+    4. Create the view that will display only one movie

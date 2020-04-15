@@ -1,6 +1,8 @@
 <?php
 // Check its working
-var_dump($movies);
+var_dump($movie);
+// var_dump($comment);
+$commentsArr = $movie->__get('_comments');
 
 ?>
 <!-- The VIEW -->
@@ -16,18 +18,21 @@ var_dump($movies);
 <body>
     <?php
 
-    foreach ($movies as $movie) {
-        echo $movie->get_id() . '<br>';
-        echo $movie->get_title() . '<br>';
-        echo $movie->get_description() . '<br>';
-        echo $movie->get_release_date() . '<br>';
+    echo $movie->__get('_id') . '<br>';
+    echo $movie->__get('_title') . '<br>';
+    echo $movie->__get('_description') . '<br>';
+    echo $movie->__get('_realease_date') . '<br>';
+    echo '<br>';
+
+    foreach ($commentsArr as $comment) {
+        echo 'Comment: ' . $comment->__get('id') . '<br>';
+        echo $comment->__get('comment') . '<br>';
+        echo $comment->__get('movie_id') . '<br>';
+        echo '<hr>';
     }
-    // foreach ($movies as $movie) {
-    //     echo $movie->_id . '<br>';
-    //     echo $movie->_title . '<br>';
-    //     echo $movie->_description . '<br>';
-    //     echo $movie->_release_date . '<br>';
-    // }
+
+
+
 
     ?>
 </body>
