@@ -17,6 +17,7 @@ class Movie
         $this->$name = $value;
     }
 
+    // ? Should use the name alteration in get
     public function __get($name)
     {
         return $this->$name;
