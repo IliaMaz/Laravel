@@ -31,3 +31,7 @@ Route::post('/book/create', 'BookController@insert');
 // ? Form for editing books
 Route::get('/book/update/{id}', 'BookController@editPage');
 Route::put('/book/update/{id}', 'BookController@update');
+// ? Delete selected book
+// Route::get('/book/delete/{id}', 'BookController@delete');
+Route::delete('/book/delete/{id}', 'BookController@delete');
+// Route::delete('/book/delete/{id}', 'BookController@delete');

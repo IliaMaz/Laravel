@@ -9,4 +9,5 @@
 
 		Try to use JSON to send result.
 		Becarefull with the CSRF token when using AJAX !
+	
 ?>

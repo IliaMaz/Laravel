@@ -10,8 +10,8 @@
     <form method="post">
         @csrf
         @method('put')
-        <input type="text" name="title" placeholder="Book title...">
-        <input type="number" name="price" placeholder="Book price...">
+        <input type="text" name="title" value="<?= $book->title?>" placeholder="Book title..."> <br>
+        <input type="number" name="price" value="<?= $book->price?>" placeholder="Book price..."> <br>
         <input type="submit" value="Edit">
     </form>
 </body>
