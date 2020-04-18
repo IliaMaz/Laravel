@@ -17,6 +17,7 @@ class BookSeeder extends Seeder
             DB::table('books')->insert([
                 'title' => Str::random(15),
                 'price' => rand(3, 999),
+                'author_id' => rand(1, 10)
             ]);
         }
     }

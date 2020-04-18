@@ -14,10 +14,11 @@ class CreateTableBooks extends Migration
     public function up()
     {
         Schema::create('books', function (Blueprint $table) {
-            $table->id();
+            $table->engine = 'InnoDB';
+            $table->id('id');
             $table->string('title');
             $table->decimal('price');
-            $table->foreign('author_id')->references('id')->on('authors');
+            $table->foreignId('author_id')->references('id')->on('authors');
             $table->timestamps();
         });
     }

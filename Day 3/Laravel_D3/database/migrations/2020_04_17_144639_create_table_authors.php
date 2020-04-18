@@ -14,10 +14,11 @@ class CreateTableAuthors extends Migration
     public function up()
     {
         Schema::create('authors', function (Blueprint $table) {
-            $table->id();
+            $table->engine = 'InnoDB';
+            $table->id('id');
             $table->string('name', 40);
             $table->date('date_of_birth');
-            $table->enum('gender', [0 => ['female'], 1 => ['male'], 2 => ['other']]);
+            $table->enum('gender', ['female', 'male', 'other']);
             $table->timestamps();
         });
     }
