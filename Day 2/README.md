@@ -10,3 +10,7 @@
     -- "composer update" will look at the versions (in cli)
         - If there is anything to update it will be updated
             - Even major changes 6.9 -> 7
+## Exercises_Day_2
+
+    -- The work done by me
+    -- Has been worked on in Day 3 & 4
