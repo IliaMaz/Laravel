@@ -20,18 +20,19 @@ Route::get('/', function () {
 });
 
 // * Using controllers 
-
+// * not using resource because its becoming a mess, editing something 
+// * that was built with something else in mind
 // ? Show all tha Books
-Route::get('/books', 'BookController@showAll');
+Route::get('/books', 'BookController@index');
 
 // ? Form to insert Books
 Route::get('/book/create', 'BookController@create');
-Route::post('/book/create', 'BookController@insert');
+Route::post('/book/create', 'BookController@store');
 
 // ? Form for editing books
-Route::get('/book/update/{id}', 'BookController@editPage');
-Route::put('/book/update/{id}', 'BookController@update');
+Route::get('/book/update/{id}', 'BookController@show');
+Route::put('/book/update/{id}', 'BookController@edit');
 // ? Delete selected book
 // Route::get('/book/delete/{id}', 'BookController@delete');
-Route::delete('/book/delete/{id}', 'BookController@delete');
+Route::delete('/book/delete/{id}', 'BookController@destroy');
 // Route::delete('/book/delete/{id}', 'BookController@delete');

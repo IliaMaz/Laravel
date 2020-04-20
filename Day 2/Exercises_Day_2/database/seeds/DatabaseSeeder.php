@@ -13,12 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 30; $i++) {
-            DB::table('books')->insert([
-                'title' => Str::random(15),
-                'price' => rand(3, 999)
-            ]);
-        }
-        // $this->call(UserSeeder::class);
+        $this->call([
+            AuthorSeeder::class,
+            BookSeeder::class
+        ]);
     }
 }

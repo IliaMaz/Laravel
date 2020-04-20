@@ -7,6 +7,16 @@
     <title>Edit That Book</title>
 </head>
 <body>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <h3>Author: <?= $author->name ?></h3>
     <form method="post">
         @csrf
         @method('put')

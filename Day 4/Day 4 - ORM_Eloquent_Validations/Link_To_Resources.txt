@@ -1,0 +1,3 @@
+- ORM Eloquent & Model : https://laravel.com/docs/7.x/eloquent
+- Relationships : https://laravel.com/docs/7.x/eloquent-relationships
+- Validations : https://laravel.com/docs/7.x/validation
