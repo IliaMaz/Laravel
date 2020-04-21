@@ -36,3 +36,6 @@ Route::put('/book/update/{id}', 'BookController@edit');
 // Route::get('/book/delete/{id}', 'BookController@delete');
 Route::delete('/book/delete/{id}', 'BookController@destroy');
 // Route::delete('/book/delete/{id}', 'BookController@delete');
+// ? Order by price
+Route::get('/books/order/{order}', 'BookController@index');
+// Route::get('/books/order/{order}', 'BookController@index');

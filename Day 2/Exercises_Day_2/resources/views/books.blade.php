@@ -12,6 +12,12 @@
   crossorigin="anonymous"></script>
 </head>
 <body>
+    <h2>Books List</h2>
+    <h3>Make a new <a href="/book/create">book</a>.</h3>
+    <h3>Order by price:</h3> 
+    <a class="orderP"  href="/books/order/asc">Ascending</a>
+    <a class="orderP"  href="/books/order/desc">Descending</a>
+    <hr>
     <div id="books"></div>
     @foreach ($books as $book)
     {{$book->title}} <br>
@@ -20,8 +26,11 @@
     <a class="delete" id="{{$book->id}}" href="">Delete</a>
     <hr>
     @endforeach
+
+    {{$books->links()}}
+
 {{-- <script src="{{asset('js/jquery.js')
 }}"></script> --}}
-<script src="{{asset('js/deleteBook.js')}}"></script>
+<script src="{{asset('js/ajax.js')}}"></script>
 </body>
 </html>

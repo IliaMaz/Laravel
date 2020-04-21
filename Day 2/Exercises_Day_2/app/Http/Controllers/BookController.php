@@ -2,31 +2,46 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Query\Builder;
 use App\Author;
 use App\Book;
 use App\Http\Requests\EditBook;
 use Illuminate\Http\Request;
+
 
 class BookController extends Controller
 {
     // ! Methods altered, view changelogs on github for progression
     // ! In case I haven't deleted the old commented code feel free to read here
     // * Show all the books
-    public function index()
+    public function index($order = false)
     {
-        $books = Book::all();
-        // * Trying and failing, I'll get you soon E ORM
-        // $books = Book::all(
-        //     Author::select('id', 'name')
-        //         ->whereColumn('author_id', 'author.id')
-        //         ->orderBy('id', 'asc')
-        // );
-        return view('books', ['books' => $books]);
+        // dump($order);
+        if ($order === "asc") {
+            $books = Book::orderBy('price')
+                ->paginate(10);
+            return view('books', ['books' => $books]);
+        } elseif ($order === "desc") {
+            $books = Book::orderByDesc('price')
+                ->paginate(10);
+            return view('books', ['books' => $books]);
+        } else {
+            $books = Book::orderBy('id')
+                ->paginate(10);
+            // * Trying and failing, I'll get you soon E ORM
+            // $books = Book::all(
+            //     Author::select('id', 'name')
+            //         ->whereColumn('author_id', 'author.id')
+            //         ->orderBy('id', 'asc')
+            // );
+            return view('books', ['books' => $books]);
+        }
     }
     // * Show the create-book page
     public function create()
     {
-        return view('create-book');
+        $authors = Author::all();
+        return view('create-book', ['authors' => $authors]);
     }
     // * Create the book & Insert into DB
     public function store(EditBook $request)
@@ -35,7 +50,7 @@ class BookController extends Controller
         $book = new Book;
         $book->title = $request->title;
         $book->price = $request->price;
-        $book->author_id = rand(1, 10);
+        $book->author_id = $request->author;
         $result = $book->save();
         if ($result)
             return redirect('/books');
@@ -47,7 +62,7 @@ class BookController extends Controller
     {
         $book = Book::where('id', $id)
             ->first();
-        $author = Author::find($book->author_id);
+        $author = $book->author;
         return view('edit-book', ['book' => $book, 'author' => $author]);
     }
     // * Update a specific book
