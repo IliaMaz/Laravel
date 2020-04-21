@@ -5,18 +5,22 @@ namespace App\Http\Controllers;
 use App\Author;
 use App\Book;
 use App\Http\Requests\EditBook;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use Symfony\Component\VarDumper\VarDumper;
 
 class BookController extends Controller
 {
-    // ! Use redirect(), some methods need alteration
-
+    // ! Methods altered, view changelogs on github for progression
+    // ! In case I haven't deleted the old commented code feel free to read here
     // * Show all the books
     public function index()
     {
         $books = Book::all();
+        // * Trying and failing, I'll get you soon E ORM
+        // $books = Book::all(
+        //     Author::select('id', 'name')
+        //         ->whereColumn('author_id', 'author.id')
+        //         ->orderBy('id', 'asc')
+        // );
         return view('books', ['books' => $books]);
     }
     // * Show the create-book page
@@ -25,24 +29,18 @@ class BookController extends Controller
         return view('create-book');
     }
     // * Create the book & Insert into DB
-    public function store(Request $request)
+    public function store(EditBook $request)
     {
-        // $titleValid = strlen($request->title) > 0 && strlen($request->title) <= 100;
-        // $price = intval($request->price);
-        // $priceValid = is_int($price);
-        // if ($titleValid && $priceValid) {
-        // $result = DB::insert('INSERT INTO books(title, price) VALUES (?,?)', [$request->title, $request->price]);
+        $request->validated();
         $book = new Book;
         $book->title = $request->title;
         $book->price = $request->price;
         $book->author_id = rand(1, 10);
         $result = $book->save();
         if ($result)
-            // dump($book);
             return redirect('/books');
         else
             return 'Something went wrong...';
-        // }
     }
     // * Show the edit page for a specific book
     public function show($id)
@@ -57,7 +55,7 @@ class BookController extends Controller
     {
         // * ... Validations
         $request->validated();
-        // $result = DB::update('UPDATE books SET title = ? , price = ? WHERE id = ?', [$request->title, $request->price, $id]);
+        // * Edit
         $book = Book::find($id);
         $book->title = $request->title;
         $book->price = $request->price;
@@ -71,6 +69,7 @@ class BookController extends Controller
     // * Delete a specific book
     public function destroy(Request $response, $id)
     {
+        // * Unused request because I want to do JSON but currently no time
         // $deleteResult = DB::delete('DELETE FROM books WHERE id = ?', [$id]);
         // $json = json_encode($response);
         $destroy = Book::destroy($id);
